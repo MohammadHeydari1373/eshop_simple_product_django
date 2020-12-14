@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container">
+    <div class="row">
+ {% for product in object_list %}
+         <div class="col-sm-6" style="border:  1px solid {% cycle 'red' 'blue' %}    ; margin-bottom: 5px">
+             {{ forloop.counter }}
+        {% include 'products/component/product_item.html' with product=product %}
+         </div>
+ {% endfor %}
+    </div>
+    </div>
+
+{% endblock %}

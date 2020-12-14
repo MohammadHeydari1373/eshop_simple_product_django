@@ -1,0 +1,39 @@
+{% url "home_page"  as homepage %}
+{% url "login"  as loginpage %}
+{% url "register"  as registerpage %}
+{% url "about_us"  as aboutpage %}
+{% url "contact_us"  as contactpage %}
+{% url "products:product_list"  as productpage %}
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">{{ title }}</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="{% if request.path == homepage %} active {% endif %}"><a href="{{ homepage }}">Home <span class="sr-only">(current)</span></a></li>
+        <li  class="{% if request.path == productpage %} active {% endif %}"><a href="{{ productpage }}">product</a></li>
+          <li   class="{% if request.path == aboutpage %} active {% endif %}"><a href="{{aboutpage}}">about us</a></li>
+          <li   class="{% if request.path == contactpage %} active {% endif %}"><a href="{{contactpage}}">contact us</a></li>
+        {% if not request.user.is_authenticated %}
+
+          <li  class="{% if request.path == loginpage %} active {% endif %}"><a href="{{ loginpage}}">Login</a></li>
+          <li  class="{% if request.path == registerpage %} active {% endif %}"><a href="{{registerpage}}">Register</a></li>
+            {% else %}
+          <li  ><a href="/admin/logout/">logout</a></li>
+        {% endif %}
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

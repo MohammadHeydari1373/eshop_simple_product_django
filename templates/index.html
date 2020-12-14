@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+   <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{ text }}
+                <br>
+                <img src="{% static 'images/play-icon.png' %}" alt="" width="300">
+            </div>
+        </div>
+    {% if request.user.is_authenticated %}
+            </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {{ newText }}
+                    <br>
+                    <a class="btn btn-success" href="{% url  'admin:index' %}">admin</a>
+
+                </div>
+            </div>
+    </div>
+
+    {% endif %}
+{% endblock %}

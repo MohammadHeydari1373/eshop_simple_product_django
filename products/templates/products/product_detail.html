@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+    <div class=" col-md-12">
+        <div class="thumbnail">
+            {% if object.image %}
+                <img src={{ object.image.url }} width="300" >
+            {% endif %}
+
+
+        <div class="caption">
+            <h3>{{object.title}}</h3>
+            <h4>{{object.timestamp | timesince }}</h4>
+            <p>{{ object.description }} <br> {{ object.price }}</p>
+
+        </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
